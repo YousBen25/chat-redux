@@ -37,7 +37,7 @@ class MessageForm extends Component {
   handleSubmit = (event) => {
     event.preventDefault();
     if (this.handleValidation()) {
-      this.props.createMessage(this.props.selectedChannel, this.props.currentUser, this.state.value);
+      this.props.createMessage(this.props.channelFromParams, this.props.currentUser, this.state.value);
       this.setState({ value: '' }); // Reset message input
     } else {
       alert("Message cannot be empty.");
@@ -67,8 +67,7 @@ function mapDispatchToProps(dispatch) {
 
 function mapStateToProps(state) {
   return {
-    currentUser: state.currentUser,
-    selectedChannel: state.selectedChannel
+    currentUser: state.currentUser
   };
 }
 
