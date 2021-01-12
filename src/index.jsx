@@ -6,7 +6,7 @@ import
 {
   createStore, combineReducers, applyMiddleware, compose
 } from 'redux';
-import { BrowserRouter as Router, Route, Redirect, Switch }
+import { HashRouter, Route, Redirect, Switch }
   from 'react-router-dom';
 import { createHistory as history } from 'history';
 import logger from 'redux-logger';
@@ -43,12 +43,12 @@ const store = createStore(reducers, initialState, middlewares);
 // render an instance of the component in the DOM
 ReactDOM.render(
   <Provider store={store}>
-    <Router history={history}>
+    <HashRouter history={history}>
       <Switch>
         <Route path="/:channel" component={App} />
         <Redirect from="/" to="/general" />
       </Switch>
-    </Router>
+    </HashRouter>
   </Provider>,
   document.getElementById('app')
 );
